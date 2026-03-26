@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B. Cole Reynolds — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── Base ───────────────────────────────────────────── */
+    html {
+      font-size: 10.5pt;
+      background: #e8e8e8;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: #111;
+      line-height: 1.5;
+      background: #e8e8e8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 3rem;
+    }
+
+    /* ─── Page Shell ─────────────────────────────────────── */
+    .page {
+      background: #fff;
+      width: 8.5in;
+      min-height: 11in;
+      padding: 0.7in 0.75in 0.65in;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+      position: relative;
+    }
+
+    /* ─── PDF Button ─────────────────────────────────────── */
+    .pdf-btn-wrap {
+      width: 8.5in;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 0.6rem;
+    }
+
+    .pdf-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      background: #111;
+      border: none;
+      padding: 0.45em 1.1em;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.15s;
+    }
+
+    .pdf-btn:hover { background: #333; }
+
+    /* ─── Header ─────────────────────────────────────────── */
+    .resume-header {
+      border-bottom: 2px solid #111;
+      padding-bottom: 0.45rem;
+      margin-bottom: 0.55rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75in;
+    }
+
+    .resume-headshot {
+      width: 1.0in;
+      height: 1.0in;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .resume-header-text {
+      flex: 1;
+    }
+
+    .resume-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .resume-contact {
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: #333;
+    }
+
+    .resume-contact a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .resume-contact span {
+      margin: 0 0.35em;
+      color: #999;
+    }
+
+    /* ─── Summary ────────────────────────────────────────── */
+    .summary {
+      margin-bottom: 0.85rem;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: #222;
+      line-height: 1.55;
+      max-width: 95%;
+    }
+
+    /* ─── Sections ───────────────────────────────────────── */
+    .section {
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #111;
+      border-bottom: 1px solid #111;
+      padding-bottom: 0.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ─── Experience Entries ─────────────────────────────── */
+    .company-block {
+      margin-bottom: 0.65rem;
+    }
+
+    .company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.12rem;
+    }
+
+    .company-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.02rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .company-location {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: #555;
+    }
+
+    /* Role row within a company */
+    .role-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.08rem;
+    }
+
+    .role-title {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #111;
+      font-style: italic;
+    }
+
+    .role-date {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: #555;
+      white-space: nowrap;
+    }
+
+    /* Bullet list */
+    .bullets {
+      list-style: none;
+      margin: 0.15rem 0 0 0;
+      padding: 0;
+    }
+
+    .bullets li {
+      font-size: 0.78rem;
+      font-weight: 300;
+      line-height: 1.5;
+      padding-left: 0.9em;
+      position: relative;
+      color: #222;
+      margin-bottom: 0.12rem;
+    }
+
+    .bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: #888;
+    }
+
+    /* ─── Education ──────────────────────────────────────── */
+    .edu-entry {
+      margin-bottom: 0.4rem;
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .edu-school {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .edu-date {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: #555;
+    }
+
+    .edu-detail {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: #333;
+      margin-top: 0.06rem;
+    }
+
+    /* ─── Leadership ─────────────────────────────────────── */
+    .leadership-entry {
+      margin-bottom: 0.4rem;
+    }
+
+    .leadership-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .leadership-org {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .leadership-role {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: #444;
+    }
+
+    /* ─── Skills & Interests ─────────────────────────────── */
+    .inline-row {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .inline-row strong {
+      font-weight: 500;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.82rem;
+    }
+
+    /* ─── Print Styles ───────────────────────────────────── */
+    @media print {
+      html { background: white; font-size: 10pt; }
+      body {
+        background: white;
+        padding: 0;
+        display: block;
+      }
+      .pdf-btn-wrap { display: none !important; }
+      .page {
+        width: 8.5in;
+        min-height: 11in;
+        padding: 0.65in 0.75in 0.6in;
+        box-shadow: none;
+        margin: 0 auto;
+      }
+      @page {
+        size: letter portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PDF Button -->
+  <div class="pdf-btn-wrap">
+    <button class="pdf-btn" onclick="window.print()">Download PDF</button>
+  </div>
+
+  <!-- Page -->
+  <div class="page">
+
+    <!-- Header -->
+    <header class="resume-header">
+      <img src="headshot.jpeg" alt="Cole Reynolds" class="resume-headshot" />
+      <div class="resume-header-text">
+        <div class="resume-name">B. Cole Reynolds</div>
+        <div class="resume-contact">
+          (706) 248-8811
+          <span>|</span>
+          <a href="mailto:colereynolds20@gmail.com">colereynolds20@gmail.com</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Summary -->
+    <p class="summary">
+      Business professional with experience in client engagement, account management, and pipeline operations at Visa. Collaborated with Account Executives on key accounts, managed cross-functional stakeholder alignment, and built dashboards for pipeline tracking. Experience with CRM systems and data-driven qualification. Currently building an AI automation side business using AI coding tools.
+    </p>
+
+    <!-- ── Professional Experience ── -->
+    <section class="section">
+      <div class="section-title">Professional Experience</div>
+
+      <!-- Visa -->
+      <div class="company-block">
+        <div class="company-header">
+          <div class="company-name">Visa — Visa Leadership Associate</div>
+          <div class="company-location">Atlanta, GA &nbsp;·&nbsp; July 2024 – Present</div>
+        </div>
+
+        <!-- Fintech Partnerships -->
+        <div class="role-row" style="margin-top:0.2rem;">
+          <div class="role-title">Fintech Partnerships Associate</div>
+          <div class="role-date">February 2025 – September 2025</div>
+        </div>
+        <ul class="bullets">
+          <li>Managed day-to-day partnership operations for the Cash App account, serving as primary liaison between Account Executive, cross-functional stakeholders, and the client to drive strategic alignment and upselling, generating $21M in ARR.</li>
+          <li>Developed early-stage strategy for the Visa × Cash App credit graduation program targeting Gen Z users, defining target segments, value propositions, and competitive differentiation in the consumer credit market.</li>
+        </ul>
+
+        <!-- Global Government Engagement -->
+        <div class="role-row" style="margin-top:0.3rem;">
+          <div class="role-title">Global Government Engagement Associate</div>
+          <div class="role-date">August 2025 – Present</div>
+        </div>
+        <ul class="bullets">
+          <li>Support the Visa Economic Empowerment Institute (VEEI), a payments policy think tank focused on public-private partnerships; create collateral for research and convenings that shape policy across emerging technologies, central banking, and payments.</li>
+          <li>Drive client engagement strategy for The Institute — work directly with Account Executives of Global Financial Institutions and technology partners to identify priority clients and develop the GTM motion.</li>
+        </ul>
+
+        <!-- LAC Strategy -->
+        <div class="role-row" style="margin-top:0.3rem;">
+          <div class="role-title">LAC Fintech / Stablecoin Strategy Project</div>
+          <div class="role-date">August 2025 – December 2025</div>
+        </div>
+        <ul class="bullets">
+          <li>Selected as one of 10 global associates to participate in a corporate strategy project in the LAC region; developed a comprehensive view of the LAC fintech and payments landscape with recommendations for Visa Ventures and M&A on partnership and investment prioritization.</li>
+          <li>Built a comprehensive list of 50+ early-stage fintechs and startups — including full analysis of each — to make investment or partnership recommendations to Visa LAC strategic leadership, including the LAC Chairman and board.</li>
+        </ul>
+
+        <!-- Strategic Finance -->
+        <div class="role-row" style="margin-top:0.3rem;">
+          <div class="role-title">Strategic Finance Associate</div>
+          <div class="role-date">July 2024 – February 2025</div>
+        </div>
+        <ul class="bullets">
+          <li>Performed finance and data analysis for the Global Value in Kind (VIK) finance portfolio, including traditional FP&amp;A and strategic data analysis across some of Visa's largest global clients.</li>
+          <li>Redesigned data pipeline to track VIK creation metrics against FY25 scorecard numbers; enhanced the Power BI dashboard to enable stakeholders to self-service reporting needs across VIK Creation.</li>
+        </ul>
+      </div>
+
+      <!-- Reyn AI -->
+      <div class="company-block">
+        <div class="company-header">
+          <div class="company-name">Reyn AI</div>
+          <div class="company-location">Atlanta, GA &nbsp;·&nbsp; October 2025 – Present</div>
+        </div>
+        <div class="role-row">
+          <div class="role-title">Founder</div>
+          <div class="role-date"></div>
+        </div>
+        <ul class="bullets">
+          <li>Using AI tools (Claude, Cursor, N8N, Twilio) to build a missed-call-text-back automation system for appointment-based businesses such as dentists, mechanics, and massage therapists in the Atlanta area.</li>
+          <li>Conducting cold outreach to target businesses to validate product-market fit, develop pricing strategy, and secure pilot partners.</li>
+        </ul>
+      </div>
+
+      <!-- Q2 Software -->
+      <div class="company-block">
+        <div class="company-header">
+          <div class="company-name">Q2 Software — Business Analyst Intern</div>
+          <div class="company-location">Austin, TX &nbsp;·&nbsp; May 2023 – September 2023</div>
+        </div>
+        <ul class="bullets" style="margin-top:0.15rem;">
+          <li>Supported product teams with requirements gathering and client feedback analysis for a digital banking platform serving 400+ financial institutions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Education ── -->
+    <section class="section">
+      <div class="section-title">Education</div>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <div class="edu-school">The University of Georgia</div>
+          <div class="edu-date">Athens, GA &nbsp;·&nbsp; May 2024</div>
+        </div>
+        <div class="edu-detail">Bachelor of Business Administration in Finance — Business Analytics Emphasis &amp; Fintech Certificate</div>
+      </div>
+
+      <div class="edu-entry">
+        <div class="edu-header">
+          <div class="edu-school">University of Innsbruck International Summer School</div>
+          <div class="edu-date">Innsbruck, Austria &nbsp;·&nbsp; July – August 2022</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Leadership & Relevant Experience ── -->
+    <section class="section">
+      <div class="section-title">Leadership &amp; Relevant Experience</div>
+
+      <div class="leadership-entry">
+        <div class="leadership-header">
+          <div class="leadership-org">Visa Young Professionals — Board Member</div>
+          <div class="leadership-role">Atlanta, GA</div>
+        </div>
+        <ul class="bullets" style="margin-top:0.1rem;">
+          <li>Leadership team of the Atlanta chapter of the VYP Employee Resource Group, focused on professional development and networking for employees earlier in their careers.</li>
+        </ul>
+      </div>
+
+      <div class="leadership-entry">
+        <div class="leadership-header">
+          <div class="leadership-org">Capital Group — Member</div>
+          <div class="leadership-role">Atlanta, GA</div>
+        </div>
+        <ul class="bullets" style="margin-top:0.1rem;">
+          <li>Faith-based professional development group in Atlanta facilitating networking and fellowship for young men; six annual lunches featuring high-caliber business leaders on the intersection of faith and career.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Technical Skills ── -->
+    <section class="section">
+      <div class="section-title">Technical Skills</div>
+      <p class="inline-row">
+        Power BI &nbsp;·&nbsp; Excel (Intermediate) &nbsp;·&nbsp; Salesforce &nbsp;·&nbsp; HubSpot &nbsp;·&nbsp; CRM Systems &nbsp;·&nbsp; Pipeline Management &nbsp;·&nbsp; AI Tools (Claude, Cursor, N8N)
+      </p>
+    </section>
+
+    <!-- ── Interests ── -->
+    <section class="section" style="margin-bottom:0;">
+      <div class="section-title">Interests</div>
+      <p class="inline-row">
+        <strong>Business:</strong> Fintech &nbsp;·&nbsp; AI &nbsp;·&nbsp; Markets &amp; Investing &nbsp;·&nbsp; Payments &nbsp;·&nbsp; Startups &nbsp;·&nbsp; Sales &nbsp;·&nbsp; Entrepreneurship
+        &emsp;|&emsp;
+        <strong>Personal:</strong> Sports &nbsp;·&nbsp; Reading &nbsp;·&nbsp; Writing &nbsp;·&nbsp; Fishing
+      </p>
+    </section>
+
+  </div><!-- /.page -->
+</body>
+</html>
